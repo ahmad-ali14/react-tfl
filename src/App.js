@@ -155,15 +155,27 @@ const DestTable = ({ selectedLine }) => {
         </tr>
       </thead>
       <tbody>
-        {
-          <tr>
-            <th scope="row">{line.modeName ? line.modeName : 'No Line Choosen'}</th>
-            <td>{line.name ? line.name : 'No Line Choosen'}</td>
-            <td>{line.routeSections ? line.routeSections[0].originationName : 'No Line Choosen'}</td>
-            <td>{line.routeSections ? line.routeSections[0].destinationName : 'No Line Choosen'}</td>
-          </tr>
+    
+          
+            { line.routeSections.length > 0 ? (line.routeSections.map((route)=>{
+               <tr>
+               <th scope="row">{line.modeName ? line.modeName : 'No Line Choosen'}</th>
+                    <td>{line.name ? line.name : 'No Line Choosen'}</td>
+                    <td>{route.originationName }</td>
+                    <td>{route.destinationName }</td>
+                </tr>
+                ) : (
+                  <tr>
+               <th scope="row">{line.modeName ? line.modeName : 'No Line Choosen'}</th>
+                    <td>{line.name ? line.name : 'No Line Choosen'}</td>
+                    <td>{line.routeSections ? line.routeSections[0].originationName : 'No Line Choosen'}</td>
+                    <td>{line.routeSections ? line.routeSections[0].destinationName : 'No Line Choosen'}</td>
+                </tr>
+    
+                    )
+  
+          })}
 
-        }
 
       </tbody>
     </table>
